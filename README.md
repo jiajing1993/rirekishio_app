@@ -1,2 +1,2 @@
 # Rirekishio
-Create Resume human wanna read for free
+Create résumé human wanna read for free
