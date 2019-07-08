@@ -10,4 +10,5 @@
 #
 
 class EducationBackground < ApplicationRecord
+  belongs_to :profile
 end

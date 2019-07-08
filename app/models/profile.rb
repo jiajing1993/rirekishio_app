@@ -13,4 +13,10 @@
 #
 
 class Profile < ApplicationRecord
+  belongs_to :user
+
+  has_many :skills
+  has_many :work_experiences
+  has_many :education_backgrounds
+  has_many :project_experiences
 end

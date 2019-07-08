@@ -9,4 +9,5 @@
 #
 
 class ProjectExperience < ApplicationRecord
+  belongs_to :profile
 end
