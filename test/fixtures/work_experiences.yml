@@ -1,0 +1,25 @@
+# == Schema Information
+#
+# Table name: work_experiences
+#
+#  id          :integer          not null, primary key
+#  company     :string
+#  role        :string
+#  start_date  :date
+#  end_date    :date
+#  city        :string
+#  description :string
+#  profile_id  :integer
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value

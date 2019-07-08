@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_08_122251) do
+ActiveRecord::Schema.define(version: 2019_07_08_131224) do
+
+  create_table "education_backgrounds", force: :cascade do |t|
+    t.string "university"
+    t.string "major"
+    t.date "graduation_date"
+    t.integer "profile_id"
+    t.index ["profile_id"], name: "index_education_backgrounds_on_profile_id"
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.string "name"
@@ -20,6 +28,20 @@ ActiveRecord::Schema.define(version: 2019_07_08_122251) do
     t.string "carrier_goal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "project_experiences", force: :cascade do |t|
+    t.string "name"
+    t.string "link"
+    t.string "description"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "proficiency"
+    t.string "skills"
+    t.string "description"
+    t.integer "profile_id"
+    t.index ["profile_id"], name: "index_skills_on_profile_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,6 +60,17 @@ ActiveRecord::Schema.define(version: 2019_07_08_122251) do
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "work_experiences", force: :cascade do |t|
+    t.string "company"
+    t.string "role"
+    t.date "start_date"
+    t.date "end_date"
+    t.string "city"
+    t.string "description"
+    t.integer "profile_id"
+    t.index ["profile_id"], name: "index_work_experiences_on_profile_id"
   end
 
 end
