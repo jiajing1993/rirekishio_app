@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_08_133026) do
+ActiveRecord::Schema.define(version: 2019_07_08_144125) do
 
   create_table "education_backgrounds", force: :cascade do |t|
     t.string "university"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2019_07_08_133026) do
     t.string "career_goal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "project_experiences", force: :cascade do |t|
