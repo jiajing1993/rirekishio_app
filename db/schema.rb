@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_08_131224) do
+ActiveRecord::Schema.define(version: 2019_07_08_133026) do
 
   create_table "education_backgrounds", force: :cascade do |t|
     t.string "university"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_07_08_131224) do
     t.string "email"
     t.string "phone_number"
     t.string "current_role"
-    t.string "carrier_goal"
+    t.string "career_goal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
