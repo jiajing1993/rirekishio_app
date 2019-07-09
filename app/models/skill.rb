@@ -11,4 +11,11 @@
 
 class Skill < ApplicationRecord
   belongs_to :profile
+
+  validates :proficiency,
+    presence: true
+  validates :skills,
+    presence: true
+  validates :description,
+    presence: true
 end

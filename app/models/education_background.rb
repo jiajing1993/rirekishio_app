@@ -11,4 +11,11 @@
 
 class EducationBackground < ApplicationRecord
   belongs_to :profile
+
+  validates :university,
+    presence: true
+  validates :major,
+    presence: true
+  validates :graduation_date,
+    presence: true
 end
