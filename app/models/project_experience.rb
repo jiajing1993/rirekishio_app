@@ -6,6 +6,7 @@
 #  name        :string
 #  link        :string
 #  description :string
+#  profile_id  :integer
 #
 
 class ProjectExperience < ApplicationRecord

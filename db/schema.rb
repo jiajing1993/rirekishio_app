@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_09_060543) do
+ActiveRecord::Schema.define(version: 2019_07_09_102106) do
 
   create_table "education_backgrounds", force: :cascade do |t|
     t.string "university"
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 2019_07_09_060543) do
     t.string "name"
     t.string "link"
     t.string "description"
+    t.integer "profile_id"
+    t.index ["profile_id"], name: "index_project_experiences_on_profile_id"
   end
 
   create_table "skills", force: :cascade do |t|

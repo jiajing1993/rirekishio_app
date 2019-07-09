@@ -6,6 +6,7 @@
 #  name        :string
 #  link        :string
 #  description :string
+#  profile_id  :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
