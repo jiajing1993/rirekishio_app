@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_09_102106) do
+ActiveRecord::Schema.define(version: 2019_07_09_140240) do
 
   create_table "education_backgrounds", force: :cascade do |t|
     t.string "university"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2019_07_09_102106) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.string "picture"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
