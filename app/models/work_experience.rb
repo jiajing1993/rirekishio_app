@@ -13,5 +13,14 @@
 #
 
 class WorkExperience < ApplicationRecord
-  belongs_to :profile
+  belongs_to :profile 
+  validate :end_date_cannot_be_earlier_than_or_equal_to_start_date
+
+  private
+
+  def end_date_cannot_be_earlier_than_or_equal_to_start_date
+    if end_date < start_date || end_date == start_date
+      errors.add :expiration_date, "End date cannot be earlier than or equal to start date."
+    end
+  end
 end
