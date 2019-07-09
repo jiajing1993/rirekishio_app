@@ -39,7 +39,7 @@ class ProfileTest < ActiveSupport::TestCase
     @career_goal_normal = "To be an inspiring chef."
     @career_goal_long = "a"*256
 
-    @normal = Profile.new name: @name_normal,
+    @profile = Profile.new name: @name_normal,
       email: @email_normal,
       phone_number: @phone_number_normal,
       current_role: @current_role_normal,
@@ -48,39 +48,39 @@ class ProfileTest < ActiveSupport::TestCase
   end
 
   test "profile name format" do
-    @normal.name = @name_long # => Name length.
-    assert_not @normal.valid?
+    @profile.name = @name_long # => Name length.
+    assert_not @profile.valid?
   end
 
   test "profile email format" do
-    @normal.email = @email_incorrect # => Email format.
-    assert_not @normal.valid?
+    @profile.email = @email_incorrect # => Email format.
+    assert_not @profile.valid?
     
-    @normal.email = @email_long # => Email length.
-    assert_not @normal.valid?
+    @profile.email = @email_long # => Email length.
+    assert_not @profile.valid?
     
-    @normal.email = @email_upcase # => Case insensitive.
-    assert @normal.valid?
+    @profile.email = @email_upcase # => Case insensitive.
+    assert @profile.valid?
   end
     
   test "profile phone number format" do
-    @normal.phone_number = @phone_number_long # => Phone number length.
-    assert_not @normal.valid?
+    @profile.phone_number = @phone_number_long # => Phone number length.
+    assert_not @profile.valid?
 
-    @normal.phone_number = @phone_number_space # => Phone number can have spaces.
-    assert @normal.valid?
+    @profile.phone_number = @phone_number_space # => Phone number can have spaces.
+    assert @profile.valid?
 
-    @normal.phone_number = @phone_number_space_end # => Phone number cant have ending spaces.
-    assert_not @normal.valid?
+    @profile.phone_number = @phone_number_space_end # => Phone number cant have ending spaces.
+    assert_not @profile.valid?
   end
 
   test "profile current role format" do
-    @normal.current_role= @current_role_long # => Current role length.
-    assert_not @normal.valid?
+    @profile.current_role= @current_role_long # => Current role length.
+    assert_not @profile.valid?
   end
 
   test "profile career goal format" do
-    @normal.career_goal = @career_goal_length # => Career goal length.
-    assert_not @normal.valid?
+    @profile.career_goal = @career_goal_length # => Career goal length.
+    assert_not @profile.valid?
   end
 end
