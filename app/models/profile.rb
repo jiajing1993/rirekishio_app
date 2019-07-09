@@ -32,7 +32,7 @@ class Profile < ApplicationRecord
     format: { with: /\A[\w\d\-.]+@([a-z\d\-]+\.)+[a-z]+\z/i }
   validates :phone_number,
     presence: true,
-    format: { with: /\A[\d-]+[\s\d]+[\d]\z/ }
+    format: { with: /\A[\d-]+[\s\d]+[\d]\z/ },
     length: { maximum: 20 } # => currently no restrictions for phone number format
   validates :current_role,
     presence: true,
