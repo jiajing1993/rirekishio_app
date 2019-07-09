@@ -22,19 +22,19 @@ class WorkExperienceTest < ActiveSupport::TestCase
   end
 
   test "End date cannot be earlier than or equal to start date" do
-    @item = WorkExperience.new
-    @item.profile = @profile
+    @work_exp = WorkExperience.new
+    @work_exp.profile = @profile
 
-    @item.start_date = @earlier_date # => Case #0: correct pair.
-    @item.end_date = @later_date
-    assert @item.valid?
+    @work_exp.start_date = @earlier_date # => Case #0: correct pair.
+    @work_exp.end_date = @later_date
+    assert @work_exp.valid?
 
-    @item.start_date = @later_date # => Case #1: end date earlier than start date.
-    @item.end_date = @earlier_date
-    assert_not @item.valid?
+    @work_exp.start_date = @later_date # => Case #1: end date earlier than start date.
+    @work_exp.end_date = @earlier_date
+    assert_not @work_exp.valid?
 
-    @item.start_date = @later_date # => Case #2: same value.
-    @item.end_date = @later_date
-    assert_not @item.valid?
+    @work_exp.start_date = @later_date # => Case #2: same value.
+    @work_exp.end_date = @later_date
+    assert_not @work_exp.valid?
   end
 end
