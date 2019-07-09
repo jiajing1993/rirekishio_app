@@ -21,6 +21,8 @@ class Profile < ApplicationRecord
   has_many :education_backgrounds
   has_many :project_experiences
 
+  validates_associated :skills, :work_experiences, :education_backgrounds, :project_experiences
+
   accepts_nested_attributes_for :skills, :work_experiences, :education_backgrounds, :project_experiences, allow_destroy: true
 
   validates :name,
