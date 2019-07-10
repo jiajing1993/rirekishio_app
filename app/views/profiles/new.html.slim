@@ -23,7 +23,7 @@ p Create résumé human wanna read for free
   #Skills
     - @childs = ["proficiency", "skills", "description"]
     = first_inputs("skills", @childs).html_safe
-  button type="button" onclick="" &#43 Add Skills
+  button type="button" onclick="input_fields(0)" &#43 Add Skills
   br
 
   hr
@@ -31,7 +31,7 @@ p Create résumé human wanna read for free
   #WorkExperience
     - @childs = ["company", "role", "start_date", "end_date", "city", "description"]
     = first_inputs("work_experience", @childs).html_safe
-  button type="button" onclick="" &#43 Add Working Experience
+  button type="button" onclick="input_fields(1)" &#43 Add Working Experience
   br
 
   hr
@@ -39,7 +39,7 @@ p Create résumé human wanna read for free
   #EducationBackground
     - @childs = ["graduation_date", "university", "major"]
     = first_inputs("education_background", @childs).html_safe
-  button type="button" onclick="" &#43 Add Education Background
+  button type="button" onclick="input_fields(2)" &#43 Add Education Background
   br
 
   hr
@@ -47,7 +47,7 @@ p Create résumé human wanna read for free
   #ProjectExperience
     - @childs = ["name", "link" ,"description"]
     = first_inputs("project_experience", @childs).html_safe
-  button type="button" onclick="" &#43 Add Project Experience
+  button type="button" onclick="input_fields(3)" &#43 Add Project Experience
   br
 
   hr

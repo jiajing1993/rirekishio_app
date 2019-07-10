@@ -10,13 +10,16 @@ module ProfilesHelper
   def first_inputs(parent, childs = [])
     result = ''
     childs.each do |child|
-      if parent == "project_experience"
+      @title =  child.split('_').join(' ').capitalize
+
+      # exceptions
+      if parent == "work_experience"
+        if child == "company" then @title = "Company Name" end
+      elsif parent == "project_experience"
         if child == "name" then @title = "Project Name" end
         if child == "link" then @title = "Project Link" end
-      elsif parent == "education_background" && child == "graduation_date"
-        @title = "Graduation Date"
-      else
-        @title =  child.split('_').join(' ').capitalize
+      elsif parent == "education_background"
+        if child == "graduation_date" then @title = "Graduation Date" end
       end
 
       result += '<em>' + @title + '&nbsp</em>' + text_field_tag(parent + '[0][' + child + ']')
