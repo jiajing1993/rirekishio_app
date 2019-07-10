@@ -12,4 +12,6 @@ Rails.application.routes.draw do
       sign_out: 'logout',
       sign_up: 'signup'
   }
+
+  resources :profiles, only: [:new, :create, :edit, :update, :destroy]
 end
