@@ -10,9 +10,18 @@ module ProfilesHelper
   def first_inputs(parent, childs = [])
     result = ''
     childs.each do |child|
-      title =  child.split('_').join(' ').capitalize
-      result += '<em>' + title + '&nbsp</em>' + text_field_tag(parent + '[0][' + child + ']')
+      if parent == "project_experience"
+        if child == "name" then @title = "Project Name" end
+        if child == "link" then @title = "Project Link" end
+      elsif parent == "education_background" && child == "graduation_date"
+        @title = "Graduation Date"
+      else
+        @title =  child.split('_').join(' ').capitalize
+      end
+
+      result += '<em>' + @title + '&nbsp</em>' + text_field_tag(parent + '[0][' + child + ']')
     end
     return result += '<br><br>'
+
   end
 end

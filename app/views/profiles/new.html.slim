@@ -30,7 +30,7 @@ p Create résumé human wanna read for free
   h4 Working Experience
   #WorkExperience
     - @childs = ["company", "role", "start_date", "end_date", "city", "description"]
-    = first_inputs("work_experiences", @childs).html_safe
+    = first_inputs("work_experience", @childs).html_safe
   button type="button" onclick="" &#43 Add Working Experience
   br
 
@@ -45,7 +45,7 @@ p Create résumé human wanna read for free
   hr
   h4 Project Experience
   #ProjectExperience
-    - @childs = ["project__name", "project_link" ,"description"]
+    - @childs = ["name", "link" ,"description"]
     = first_inputs("project_experience", @childs).html_safe
   button type="button" onclick="" &#43 Add Project Experience
   br
