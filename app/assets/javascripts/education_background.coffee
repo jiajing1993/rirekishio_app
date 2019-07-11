@@ -1,3 +1,5 @@
+education_background =
+'
 <em>Graduation Date&nbsp</em>
 <input type="date" name="education_background[index][graduation_date]" id="education_background_index_graduation_date" />
 
@@ -8,3 +10,4 @@
 
 <button type="button" onclick="remove_field(2,index)" >&#10006</button>
 <br>
+'

@@ -1,3 +1,5 @@
+skills =
+'
 <em>Proficiency</em>
 <input type="text" name="skills[index][proficiency]" id="skills_index_proficiency" />
 
@@ -9,3 +11,4 @@
 
 <button type="button" onclick="remove_field(0,0)" >&#10006</button>
 <br>
+'

@@ -1,3 +1,5 @@
+work_experience =
+'
 <em>Company Name&nbsp</em>
 <input type="text" name="work_experience[index][company]" id="work_experience_index_company" />
 
@@ -18,3 +20,4 @@
 
 <button type="button" onclick="remove_field(1,index)" >&#10006</button>
 <br>
+'
