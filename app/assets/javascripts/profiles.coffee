@@ -99,3 +99,29 @@
     for child,i in @field_names[k]
       document.getElementById(@field_groups[k] + '_' + count + '_' + child[1]).value = buffer[count][i]
     count++
+
+@remove_field = (k, n) ->
+  parent = field_groups[k]
+  count = n
+  total_count = @field_count[k] - 1
+  while count != total_count
+    for child in @field_names[k]
+      document.getElementById(parent + '_' + count + '_' + child[1]).value =
+        document.getElementById(parent + '_' + (count + 1) + '_' + child[1]).value
+     count++
+  for child in @field_names[k]
+    final_line = document.getElementById(parent + '_' + total_count + '_' + child[1])
+
+
+    # Now need to remove the label of inputs
+    # (future): use class to identify the labels and inputs
+    tags = final_line.parentNode.getElementsByTagName("EM")
+    final_line.parentNode.removeChild(tags[tags.length - 1])
+
+    final_line.parentNode.removeChild(final_line)
+  refer_node = document.getElementById(parent + '_' + 0 + '_' + @field_names[k][0][1]).parentNode
+  brs = refer_node.getElementsByTagName("BR")
+  refer_node.removeChild(brs[brs.length - 1])
+  refer_node.removeChild(brs[brs.length - 1])
+
+  @field_count[k] -= 1
