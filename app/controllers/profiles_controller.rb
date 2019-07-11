@@ -5,7 +5,9 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
-    byebug
+    if !@profile.save
+      render :new
+    end
   end
 
   def edit
