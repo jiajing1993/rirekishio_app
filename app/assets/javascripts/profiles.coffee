@@ -71,6 +71,7 @@
     title = field[0]
     child = field[1]
     result +=  '<em>' + title + '&nbsp</em>' + '<input type="text" name="' + parent + '[' + n + '][' + child + ']" id="' + parent + '_' + n + '_' + child + '">'
+  result += '<button type="button" onclick="remove_field(' + k + ',' + n + ')" >&#10006</button>'
   result += '<br><br>'
 
 @input_fields = (k) -> # => k denotes the index of parents
@@ -103,6 +104,12 @@
 @remove_field = (k, n) ->
   parent = field_groups[k]
   count = n
+
+  # Leave at least 1 line on page
+  if @field_count[k] == 1
+    alert "You must have at least one line of it."
+    return 0
+
   total_count = @field_count[k] - 1
   while count != total_count
     for child in @field_names[k]
@@ -119,9 +126,13 @@
     final_line.parentNode.removeChild(tags[tags.length - 1])
 
     final_line.parentNode.removeChild(final_line)
+
+  # clean br and X sign
   refer_node = document.getElementById(parent + '_' + 0 + '_' + @field_names[k][0][1]).parentNode
   brs = refer_node.getElementsByTagName("BR")
   refer_node.removeChild(brs[brs.length - 1])
   refer_node.removeChild(brs[brs.length - 1])
+  buttons = refer_node.getElementsByTagName("button")
+  refer_node.removeChild(buttons[buttons.length - 1])
 
   @field_count[k] -= 1

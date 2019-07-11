@@ -15,6 +15,8 @@ module ProfilesHelper
       # exceptions
       if parent == "work_experience"
         if child == "company" then @title = "Company Name" end
+        if child == "start_date" then @title = "Start Date" end
+        if child == "end_date" then @title ="End Date" end
       elsif parent == "project_experience"
         if child == "name" then @title = "Project Name" end
         if child == "link" then @title = "Project Link" end
@@ -24,6 +26,16 @@ module ProfilesHelper
 
       result += '<em>' + @title + '&nbsp</em>' + text_field_tag(parent + '[0][' + child + ']')
     end
+
+    case parent
+    when "skills" then @k = "0"
+    when "work_experience" then @k = "1"
+    when "education_background" then @k = "2"
+    when "project_experience" then @k = "3"
+    else @k = 10
+    end
+    result += '<button type="button" onclick="remove_field(' + @k + ',0)" >&#10006</button>'
+
     return result += '<br><br>'
 
   end
