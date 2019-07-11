@@ -1,3 +1,5 @@
+project_experience =
+'
 <em>Project Name&nbsp</em>
 <input type="text" name="project_experience[index][name]" id="project_experience_index_name" />
 
@@ -9,3 +11,4 @@
 
 <button type="button" onclick="remove_field(3,index)" >&#10006</button>
 <br>
+'

@@ -21,28 +21,28 @@ p Create résumé human wanna read for free
   hr
   h4 Skills
   #Skills
-    = File.read('lib/assets/profile_forms/_skills.html').gsub!("index", "0").html_safe
+    = load_skills.html_safe
   button type="button" onclick="input_fields(0)" &#43 Add Skills
   br
 
   hr
   h4 Working Experience
   #WorkExperience
-    = File.read('lib/assets/profile_forms/_work_experience.html').gsub!("index", "0").html_safe
+    = load_work_experience.html_safe
   button type="button" onclick="input_fields(1)" &#43 Add Working Experience
   br
 
   hr
   h4 Education Background
   #EducationBackground
-    = File.read('lib/assets/profile_forms/_education_background.html').gsub!("index", "0").html_safe
+    = load_education_background.html_safe
   button type="button" onclick="input_fields(2)" &#43 Add Education Background
   br
 
   hr
   h4 Project Experience
   #ProjectExperience
-    = File.read('lib/assets/profile_forms/_project_experience.html').gsub!("index", "0").html_safe
+    = load_project_experience.html_safe
   button type="button" onclick="input_fields(3)" &#43 Add Project Experience
   br
 
