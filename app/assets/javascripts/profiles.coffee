@@ -66,13 +66,13 @@
 
 @nth_field = (k, n) -> # => k denotes the index of parents
   result = ''
-  parent = @field_groups[k]
-  for field in @field_names[k]
-    title = field[0]
-    child = field[1]
-    result +=  '<em>' + title + '&nbsp</em>' + '<input type="text" name="' + parent + '[' + n + '][' + child + ']" id="' + parent + '_' + n + '_' + child + '">'
-  result += '<button type="button" onclick="remove_field(' + k + ',' + n + ')" >&#10006</button>'
-  result += '<br><br>'
+  switch k
+    when 0 then result += @skills
+    when 1 then result += @work_experience
+    when 2 then result += @education_background
+    when 3 then result += @project_experience
+  result = result.replace(/index/g, n)
+  return result
 
 @input_fields = (k) -> # => k denotes the index of parents
   # Create buffer
@@ -130,7 +130,6 @@
   # clean br and X sign
   refer_node = document.getElementById(parent + '_' + 0 + '_' + @field_names[k][0][1]).parentNode
   brs = refer_node.getElementsByTagName("BR")
-  refer_node.removeChild(brs[brs.length - 1])
   refer_node.removeChild(brs[brs.length - 1])
   buttons = refer_node.getElementsByTagName("button")
   refer_node.removeChild(buttons[buttons.length - 1])

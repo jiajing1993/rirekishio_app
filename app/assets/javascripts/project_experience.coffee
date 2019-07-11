@@ -1,4 +1,4 @@
-project_experience =
+@project_experience =
 '
 <em>Project Name&nbsp</em>
 <input type="text" name="project_experience[index][name]" id="project_experience_index_name" />
