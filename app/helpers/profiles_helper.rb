@@ -1,18 +1,18 @@
 module ProfilesHelper
   def load_skills
-    return File.read('app/assets/javascripts/skills.coffee').gsub!("index", "0").slice(11..-3)
+    return File.read('app/assets/javascripts/profile_forms/skills.coffee').gsub!("index", "0").slice(11..-3)
   end
 
   def load_work_experience
-    return File.read('app/assets/javascripts/work_experience.coffee').gsub!("index", "0").slice(20..-3)
+    return File.read('app/assets/javascripts/profile_forms/work_experience.coffee').gsub!("index", "0").slice(20..-3)
   end
 
   def load_education_background
-    return File.read('app/assets/javascripts/education_background.coffee').gsub!("index", "0").slice(25..-3)
+    return File.read('app/assets/javascripts/profile_forms/education_background.coffee').gsub!("index", "0").slice(25..-3)
   end
 
   def load_project_experience
-    return File.read('app/assets/javascripts/project_experience.coffee').gsub!("index", "0").slice(23..-3)
+    return File.read('app/assets/javascripts/profile_forms/project_experience.coffee').gsub!("index", "0").slice(23..-3)
   end
 
   private
