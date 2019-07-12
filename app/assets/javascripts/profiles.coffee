@@ -139,3 +139,14 @@
   refer_node.removeChild(buttons[buttons.length - 1])
 
   @field_count[k] -= 1
+
+# Loads all profile data that is saved inside browser cookie.
+@load_profile = () ->
+  if document.getElementById("ProfileForm") != null
+    return 1
+  else
+    return 0
+
+
+# Save all profile data into browser cookie
+
