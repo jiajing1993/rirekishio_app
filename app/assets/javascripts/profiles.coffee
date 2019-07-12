@@ -28,8 +28,7 @@
 # **************************************************************************************************
 
 
-# Real input fields generator
-# parents: 0:skill 1:work_experience 2:education_background 3:project_experience
+# 0:skill 1:work_experience 2:education_background 3:project_experience
 @field_groups = [
   'skills',
   'work_experience',
@@ -142,11 +141,115 @@
 
 # Loads all profile data that is saved inside browser cookie.
 @load_profile = () ->
+  total_count = (k) ->
+    n = 0
+    while Cookies.get(@field_groups[k] + '_' + n + '_' + @field_names[k][0][1]) !=  undefined
+      n++
+    return n
+
   if document.getElementById("ProfileForm") != null
+    # Profile Main Part
+    ids = ["profile_name", "profile_email", "profile_phone_number", "profile_current_role", "profile_career_goal"]
+    for id in ids
+      document.getElementById(id).value = Cookies.get(id)
+
+    # Profile Skill Part
+    count = 1
+    max_count = total_count(0)
+    while count != max_count
+      input_fields(0)
+      count++
+    count = 0
+    while count != max_count
+      for label in @field_names[0]
+        id = 'skills_' + count + '_' + label[1]
+        document.getElementById(id).value = Cookies.get(id)
+      count++
+
+    # Profile Work Experience Part
+    count = 1
+    max_count = total_count(1)
+    while count != max_count
+      input_fields(1)
+      count++
+    count = 0
+    while count != max_count
+      for label in @field_names[1]
+        id = 'work_experience_' + count + '_' + label[1]
+        document.getElementById(id).value = Cookies.get(id)
+      count++
+
+    # Profile Education Background Part
+    count = 1
+    max_count = total_count(2)
+    while count != max_count
+      input_fields(2)
+      count++
+    count = 0
+    while count != max_count
+      for label in @field_names[2]
+        id = 'education_background_' + count + '_' + label[1]
+        document.getElementById(id).value = Cookies.get(id)
+      count++
+
+    # Profile Project Experience Part
+    count = 1
+    max_count = total_count(3)
+    while count != max_count
+      input_fields(3)
+      count++
+    count = 0
+    while count != max_count
+      for label in @field_names[3]
+        id = 'project_experience_' + count + '_' + label[1]
+        document.getElementById(id).value = Cookies.get(id)
+      count++
     return 1
   else
     return 0
 
 
 # Save all profile data into browser cookie
+@save_profile = () ->
+  if document.getElementById("ProfileForm") != null
+    # Profile Main Part
+    ids = ["profile_name", "profile_email", "profile_phone_number", "profile_current_role", "profile_career_goal"]
+    for id in ids
+      Cookies.set(id, document.getElementById(id).value)
 
+    # Profile Skill Part
+    count = 0
+    while count != @field_count[0]
+      for label in @field_names[0]
+        id = 'skills_' + count + '_' + label[1]
+        Cookies.set(id, document.getElementById(id).value)
+      count++
+
+    # Profile Working Experience Part
+    count = 0
+    while count != @field_count[1]
+      for label in @field_names[1]
+        id = 'work_experience_' + count + '_' + label[1]
+        Cookies.set(id, document.getElementById(id).value)
+      count++
+
+    # Profile Education Background Part
+    count = 0
+    while count != @field_count[2]
+      for label in @field_names[2]
+        id = 'education_background_' + count + '_' + label[1]
+        Cookies.set(id, document.getElementById(id).value)
+      count++
+
+    # Profile Project Experience Part
+    count = 0
+    while count != @field_count[3]
+      for label in @field_names[3]
+        id = 'project_experience_' + count + '_' + label[1]
+        Cookies.set(id, document.getElementById(id).value)
+      count++
+
+
+    return 1
+  else
+    return 0
