@@ -5,6 +5,9 @@ p Create résumé human wanna read for free
   = form_for @profile do |profile|
     = render 'shared/error_messages', object: profile.object
 
+    span class="picture"
+      = profile.file_field :picture
+
     = profile.label :name, "Full Name "
     = profile.text_field :name
     br

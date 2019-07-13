@@ -24,7 +24,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    profile = params.require(:profile).permit(:name, :email, :phone_number, :current_role, :career_goal)
+    profile = params.require(:profile).permit(:name, :email, :phone_number, :current_role, :career_goal, :picture)
     profile[:skills_attributes] = skills_array
     profile[:work_experiences_attributes] = work_experience_array
     profile[:education_backgrounds_attributes] = education_background_array
