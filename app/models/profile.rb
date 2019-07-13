@@ -45,7 +45,9 @@ class Profile < ApplicationRecord
   validates :career_goal,
     presence: true,
     length: { maximum: 255 }
- # validates :user_id,
- #   presence: true,
- #   uniqueness: true # => No user can have more than 1 profile
+  validates :user_id,
+    presence: true,
+    uniqueness: true # => No user can have more than 1 profile
+  validates :picture,
+    presence: true
 end

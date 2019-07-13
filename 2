@@ -5,9 +5,9 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
-    if no_user_id_but_valid?(@profile)
+    byebug
+    if @profile.valid?
       byebug
-      redirect_to root_path
     else
       render :new
     end
@@ -50,13 +50,12 @@ class ProfilesController < ApplicationController
   end
 
   def no_user_id_but_valid?(profile)
-    profile.valid?
     if profile.errors.full_messages.count == 2 &&
         profile.errors.full_messages[0] == 'User must exist' &&
         profile.errors.full_messages[1] == 'User can\'t be blank'
-      return true
+      return 1
     else
-      return false
+      return 0
     end
   end
 end
