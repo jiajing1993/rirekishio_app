@@ -4,13 +4,22 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    @profile = Profile.new(profile_params)
+    session[:profile_params] = profile_params
+    @profile = Profile.new(session[:profile_params])
     if no_user_id_but_valid?(@profile)
-      byebug
-      redirect_to root_path
+      render :template
+      return
     else
       render :new
     end
+  end
+
+  def template
+    @profile = Profile.new
+  end
+
+  def save
+    byebug
   end
 
   def edit
