@@ -120,15 +120,16 @@
         document.getElementById(parent + '_' + (count + 1) + '_' + child[1]).value
      count++
   for child in @field_names[k]
-    final_line = document.getElementById(parent + '_' + total_count + '_' + child[1])
-
+    final_line_id = parent + '_' + total_count + '_' + child[1]
+    final_line = document.getElementById(final_line_id)
 
     # Now need to remove the label of inputs
     # (future): use class to identify the labels and inputs
     tags = final_line.parentNode.getElementsByTagName("EM")
     final_line.parentNode.removeChild(tags[tags.length - 1])
-
+    # Remove final line
     final_line.parentNode.removeChild(final_line)
+    Cookies.remove(final_line_id)
 
   # clean br and X sign
   refer_node = document.getElementById(parent + '_' + 0 + '_' + @field_names[k][0][1]).parentNode
