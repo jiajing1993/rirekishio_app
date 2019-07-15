@@ -20,12 +20,12 @@ class WorkExperience < ApplicationRecord
   validates :company, presence: true
   validates :role, presence: true
   validates :city, presence: true
-  validate :end_date_cannot_be_earlier_than_or_equal_to_start_date
+  validate :valid_duration
 
   private
 
-  def end_date_cannot_be_earlier_than_or_equal_to_start_date
-    if !end_date.nil? && !start_date.nil?
+  def valid_duration
+    if end_date.present? && start_date.present?
       if end_date < start_date
         errors.add :start_date, "Cannot later than end date."
         errors.add :end_date, "Cannot earlier than start date."
