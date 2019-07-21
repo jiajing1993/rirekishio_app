@@ -1,0 +1,57 @@
+h1 Rirekishio App
+p Create résumé human wanna read for free
+
+#ProfileForm
+  = form_for @profile do |profile|
+    = render 'shared/error_messages', object: profile.object
+
+    span class="picture"
+      = profile.file_field :picture
+
+    = profile.label :name, "Full Name "
+    = profile.text_field :name
+    br
+    = profile.label :email, "Email "
+    = profile.email_field :email
+    br
+    = profile.label :phone_number, "Phone Number "
+    = profile.text_field :phone_number
+    br
+    = profile.label :current_role, "Current Role / Position "
+    = profile.text_field :current_role
+    br
+    = profile.label :career_goal, "Career Goal "
+    = profile.text_area :career_goal, rows:'4', cols:'50'
+    br
+
+    hr
+    h4 Skills
+    #Skills
+      = load_skills.html_safe
+    button type="button" onclick="input_fields(0)" &#43 Add Skills
+    br
+
+    hr
+    h4 Working Experience
+    #WorkExperience
+      = load_work_experience.html_safe
+    button type="button" onclick="input_fields(1)" &#43 Add Working Experience
+    br
+
+    hr
+    h4 Education Background
+    #EducationBackground
+      = load_education_background.html_safe
+    button type="button" onclick="input_fields(2)" &#43 Add Education Background
+    br
+
+    hr
+    h4 Project Experience
+    #ProjectExperience
+      = load_project_experience.html_safe
+    button type="button" onclick="input_fields(3)" &#43 Add Project Experience
+    br
+
+    hr
+    br
+    = profile.submit "Create"
