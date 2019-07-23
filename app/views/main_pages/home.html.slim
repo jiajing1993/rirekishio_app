@@ -6,4 +6,8 @@ p
 button
   a href= new_profile_path Getting Started
 br
-= link_to "Sign In", new_user_session_path 
+-if user_signed_in?
+  -if current_user.profile.present?
+    = link_to "View Profile", profile_path(current_user.profile)
+- else
+  = link_to "Sign In", new_user_session_path
