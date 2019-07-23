@@ -27,6 +27,7 @@ end
 #Profile
 9.times do |n|
   user_id = n + 1
+  picture = 'noo.png'
   name = Faker::Name.name
   email = User.find(user_id).email
   phone_number = rand(100000000).to_s
@@ -52,6 +53,7 @@ end
   ]
 
 Profile.create! user_id: user_id,
+  picture: picture,
   name: name,
   email: email,
   phone_number: phone_number,
