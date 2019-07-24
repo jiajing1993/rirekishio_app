@@ -14,7 +14,7 @@ class ProfilesController < ApplicationController
     session[:profile_params] = profile_params
     @profile = Profile.new(session[:profile_params])
     if no_user_id_but_valid?(@profile)
-      render :preview
+      redirect_to profile_preview_path
       return
     else
       render :new
@@ -22,7 +22,7 @@ class ProfilesController < ApplicationController
   end
 
   def preview
-    @profile = Profile.new
+    @profile = Profile.new(session[:profile_params])
   end
 
   def save
