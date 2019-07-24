@@ -14,14 +14,14 @@ class ProfilesController < ApplicationController
     session[:profile_params] = profile_params
     @profile = Profile.new(session[:profile_params])
     if no_user_id_but_valid?(@profile)
-      render :template
+      render :preview
       return
     else
       render :new
     end
   end
 
-  def template
+  def preview
     @profile = Profile.new
   end
 
