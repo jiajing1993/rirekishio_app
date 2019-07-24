@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       sign_up: 'signup'
   }
 
-  resources :profiles, only: [:new, :create, :edit, :update, :destroy]
+  resources :profiles, only: [:show, :new, :create, :edit, :update, :destroy]
   get '/profile/template', to: 'profiles#template'
   post '/profile/template', to: 'profiles#save'
 end
