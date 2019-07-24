@@ -67,9 +67,11 @@ class ProfilesController < ApplicationController
 
   def no_user_id_but_valid?(profile)
     profile.valid?
-    if profile.errors.full_messages.count == 2 &&
-        profile.errors.full_messages[0] == 'User must exist' &&
-        profile.errors.full_messages[1] == 'User can\'t be blank'
+
+    profile.errors.delete(:user) if profile.errors[:user] == ['must exist']
+    profile.errors.delete(:user_id) if profile.errors[:user_id] == ['can\'t be blank']
+
+    if profile.errors.full_messages.count == 0
       return true
     else
       return false
