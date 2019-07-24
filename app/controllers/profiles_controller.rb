@@ -1,4 +1,11 @@
 class ProfilesController < ApplicationController
+  before_action :user_signed_in, only: :show
+  before_action :correct_user, only: :show
+
+  def show
+    @profile = Profile.find(params[:id])
+  end
+
   def new
     @profile = Profile.new
   end
@@ -66,6 +73,22 @@ class ProfilesController < ApplicationController
       return true
     else
       return false
+    end
+  end
+
+  def user_signed_in
+    if !user_signed_in?
+      flash[:alert] = 'Please sign in first.'
+      redirect_to new_user_session_path
+      return
+    end
+  end
+
+  def correct_user
+    if current_user.id != params[:id].to_i
+      flash[:alert] = 'You don\'t have permission to view this page.'
+      redirect_to root_url
+      return
     end
   end
 end
