@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :user_signed_in, only: :show
   before_action :correct_user, only: :show
+  before_action :correct_profile, only: :preview
 
   def show
     @profile = Profile.find(params[:id])
@@ -11,9 +12,9 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    session[:profile_params] = profile_params
-    @profile = Profile.new(session[:profile_params])
+    @profile = Profile.new(profile_params)
     if @profile.save
+      session[:profile_id] = @profile.id
       redirect_to action: "preview", id: @profile.id
       return
     else
@@ -75,6 +76,14 @@ class ProfilesController < ApplicationController
 
   def correct_user
     if current_user.id != params[:id].to_i
+      flash[:alert] = 'You don\'t have permission to view this page.'
+      redirect_to root_url
+      return
+    end
+  end
+
+  def correct_profile
+    if session[:profile_id] != params[:id].to_i
       flash[:alert] = 'You don\'t have permission to view this page.'
       redirect_to root_url
       return
