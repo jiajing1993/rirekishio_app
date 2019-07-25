@@ -13,8 +13,8 @@ class ProfilesController < ApplicationController
   def create
     session[:profile_params] = profile_params
     @profile = Profile.new(session[:profile_params])
-    if @profile.valid?
-      redirect_to profile_preview_path
+    if @profile.save
+      redirect_to action: "preview", id: @profile.id
       return
     else
       render :new
@@ -22,7 +22,7 @@ class ProfilesController < ApplicationController
   end
 
   def preview
-    @profile = Profile.new(session[:profile_params])
+    @profile = Profile.find(params[:id])
   end
 
   def save
