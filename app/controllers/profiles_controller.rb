@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
   def create
     session[:profile_params] = profile_params
     @profile = Profile.new(session[:profile_params])
-    if no_user_id_but_valid?(@profile)
+    if @profile.valid?
       redirect_to profile_preview_path
       return
     else
@@ -63,19 +63,6 @@ class ProfilesController < ApplicationController
 
   def project_experience_array
     return params.require(:project_experience).values.map { |x| x.slice(:name, :link, :description) }
-  end
-
-  def no_user_id_but_valid?(profile)
-    profile.valid?
-
-    profile.errors.delete(:user) if profile.errors[:user] == ['must exist']
-    profile.errors.delete(:user_id) if profile.errors[:user_id] == ['can\'t be blank']
-
-    if profile.errors.full_messages.count == 0
-      return true
-    else
-      return false
-    end
   end
 
   def user_signed_in

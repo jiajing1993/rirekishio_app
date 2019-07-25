@@ -15,7 +15,7 @@
 #
 
 class Profile < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
 
   has_many :skills
   has_many :work_experiences
@@ -46,7 +46,6 @@ class Profile < ApplicationRecord
     presence: true,
     length: { maximum: 255 }
   validates :user_id,
-    presence: true,
     uniqueness: true # => No user can have more than 1 profile
   validates :picture,
     presence: true
