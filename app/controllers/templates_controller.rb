@@ -5,6 +5,7 @@ class TemplatesController < ApplicationController
 
   def show
     @template = Template.find(params[:id])
+    @profile = Profile.find_by(name:"Example Name")
   end
 
   def new
