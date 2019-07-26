@@ -61,6 +61,21 @@ class TemplatesController < ApplicationController
   end
 
   def destroy
+    @template = Template.find(params[:id])
+    file_name = 'app/views/templates/source/_' + @template.name + '.html.slim'
+    if !@template.nil?
+      if File.exist?(file_name)
+        File.delete(file_name)
+        flash[:notice] = "Deleted " + file_name
+      else
+        flash[:alert] = "Database have template record but cant find corresponding partial file."
+      end
+      @template.destroy
+      redirect_to templates_path
+    else
+      flash[:alert] = "Database do not have the template record."
+      redirect_to templates_path
+    end
   end
 
   private
