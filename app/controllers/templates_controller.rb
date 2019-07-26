@@ -21,6 +21,7 @@ class TemplatesController < ApplicationController
 
       # Create partial template
       template_partial = File.open('app/views/templates/source/_' + @template.name + '.html.slim', 'w')
+      template_partial.puts(Template.find_by(name:'default').content)
       template_partial.close
 
       redirect_to edit_template_path(@template)
