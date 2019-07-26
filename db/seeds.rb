@@ -25,7 +25,7 @@ User.create! email: "admin@admin.admin",
 end
 
 # Template
-template_names = ['default']
+template_names = ['default', 'simplicity']
 template_names.each do |name|
   Template.create! name: name,
     content: File.read('app/views/templates/source/_' + name + '.html.slim')
