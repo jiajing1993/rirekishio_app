@@ -1,4 +1,6 @@
 class TemplatesController < ApplicationController
+  layout "template"
+
   def index
     @templates = Template.all
   end

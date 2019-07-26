@@ -13,4 +13,6 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require codemirror
+//= require codemirror/modes/slim
 //= require_tree .
