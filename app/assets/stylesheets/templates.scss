@@ -6,6 +6,14 @@
  *= require codemirror
  */
 
+body {
+  background-color: #f0ffff;
+}
+
+#Preview {
+  background-color: white;
+}
+
 .CodeMirror {
   margin-top: 1px;
   border-style: solid;
