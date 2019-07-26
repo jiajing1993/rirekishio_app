@@ -24,17 +24,24 @@ User.create! email: "admin@admin.admin",
     confirmed_at: Time.zone.now
 end
 
+# Template
+template_names = ['default']
+template_names.each do |name|
+  Template.create! name: name,
+    content: File.read('app/views/templates/source/_' + name + '.html.slim')
+end
+
 #Profile
-9.times do |n|
-  user_id = n + 1
+10.times do |n|
+  user_id = n + 2
   name = Faker::Name.name
   email = User.find(user_id).email
   phone_number = rand(100000000).to_s
   current_role = Faker::Job.title
   career_goal = "Further enhance food picking skills."
   skills = [
-    { proficiency: "low", skills: Faker::Job.key_skill , description: Faker::Lorem.sentence(10) },
-    { proficiency: "high", skills: Faker::Job.key_skill , description: Faker::Lorem.sentence(10) }
+    { proficiency: "beginner", skills: Faker::Job.key_skill , description: Faker::Lorem.sentence(10) },
+    { proficiency: "intermediate", skills: Faker::Job.key_skill , description: Faker::Lorem.sentence(10) }
   ]
   work_experiences = [
     { company: Faker::Company.name,
@@ -62,3 +69,83 @@ Profile.create! user_id: user_id,
   education_backgrounds_attributes: education_backgrounds,
   project_experiences_attributes: project_experiences
 end
+
+# Showcase profile used by admin
+Profile.create! user_id: User.find_by(email: "admin@admin.admin").id,
+  name: "Example Name",
+  email: "example@email.org",
+  phone_number: "012-345 6789",
+  current_role: "Current Role",
+  career_goal: "An introduction paragraph, who are you, what motivates you and what are you looking for.",
+  skills_attributes: [
+    {
+      proficiency: "basic",
+      skills: "Skills #1",
+      description: "Detailed explanation on the level of proficiency of Skills #1"
+    },
+    {
+      proficiency: "intermediate",
+      skills: "Skills #2",
+      description: "Detailed explanation on the level of proficiency of Skills #2"
+    },
+    {
+      proficiency: "advanced",
+      skills: "Skills #3",
+      description: "Detailed explanation on the level of proficiency of Skills #3"
+    }
+  ],
+  work_experiences_attributes: [
+    {
+      company: "Name of Company #1",
+      city: "City#1",
+      description: "Detailed description about the work you did there.",
+      start_date: Date.new(2001, 2, 1),
+      end_date: Date.new(2002, 1, 1),
+      role: "Role #1"
+    },
+    {
+      company: "Name of Company #2",
+      city: "City#1",
+      description: "Detailed description about the work you did there.",
+      start_date: Date.new(2002, 2, 1),
+      end_date: Date.new(2003, 1, 1),
+      role: "Role #2"
+    },
+    {
+      company: "Name of Company #3",
+      city: "City#1",
+      description: "Detailed description about the work you did there.",
+      start_date: Date.new(2003, 2, 1),
+      end_date: Date.new(2004, 1, 1),
+      role: "Role #3"
+    }
+  ],
+  education_backgrounds_attributes: [
+    {
+      university: "Name of University #1",
+      major: "Major #1",
+      graduation_date: Date.new(1996, 1,1)
+    },
+    {
+      university: "Name of University #2",
+      major: "Major #2",
+      graduation_date: Date.new(2001, 1,1)
+    }
+  ],
+  project_experiences_attributes: [
+    {
+      name: "Project #1",
+      link: "Link #1",
+      description: "Detailed explanation on project #1 and your role in it"
+    },
+    {
+      name: "Project #2",
+      link: "Link #2",
+      description: "Detailed explanation on project #2 and your role in it"
+    },
+    {
+      name: "Project #3",
+      link: "Link #3",
+      description: "Detailed explanation on project #3 and your role in it"
+    }
+  ]

@@ -13,7 +13,13 @@ class TemplatesController < ApplicationController
 
   def create
     @template = Template.new(template_params)
+
     if @template.save
+
+      # Create partial template
+      template_partial = File.open('app/views/templates/source/_' + @template.name + '.html.slim', 'w')
+      template_partial.close
+
       redirect_to edit_template_path(@template)
       return
     else

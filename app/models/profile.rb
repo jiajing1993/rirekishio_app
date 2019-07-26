@@ -54,6 +54,4 @@ class Profile < ApplicationRecord
   validates :user_id,
     uniqueness: true, # => No user can have more than 1 profile
     allow_nil: true
-  validates :picture,
-    presence: true
 end
