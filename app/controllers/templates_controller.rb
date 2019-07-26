@@ -31,10 +31,33 @@ class TemplatesController < ApplicationController
 
   def edit
     @template = Template.find(params[:id])
+    @profile = Profile.find_by(name:"Example Name")
+
+    file_name = 'app/views/templates/source/_' + @template.name + '.html.slim'
+    if !File.exist?(file_name)
+      flash[:alert] = "Database have template record but cant find corresponding partial file, thus create a new one."
+      File.open(file_name, 'w').close
+    else
+      @template.content = File.read(file_name)
+    end
   end
 
   def update
     @template = Template.find(params[:id])
+    @profile = Profile.find_by(name:"Example Name")
+
+    if @template.update_attributes(template_params)
+      template_partial = File.open('app/views/templates/source/_' + @template.name + '.html.slim', 'w')
+      template_partial.puts(@template.content)
+      template_partial.close
+      if params[:save].nil?
+        render :edit
+      else
+        render :show
+      end
+    else
+      render :edit
+    end
   end
 
   def destroy

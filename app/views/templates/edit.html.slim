@@ -1,0 +1,17 @@
+= form_for @template do |template|
+  = render 'shared/error_messages', object: template.object
+
+  = template.label :name
+  b &nbsp
+  = template.text_field :name
+  
+  input type='checkbox' name="save" Save
+  = template.submit "Submit"
+  br
+
+  p= '_' + @template.name + '.html.slim:'
+  = template.text_area :content, place_holder: @template.content, id:'template_content'
+p result preview:
+#Preview
+  - if params[:preview] != "0"
+    = render 'templates/source/' + @template.name
