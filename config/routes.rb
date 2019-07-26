@@ -15,4 +15,6 @@ Rails.application.routes.draw do
 
   resources :profiles, only: [:show, :new, :create, :edit, :update, :destroy]
   get '/profile/preview', to: 'profiles#preview'
+
+  resources :templates
 end
