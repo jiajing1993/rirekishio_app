@@ -1,4 +1,6 @@
 class TemplatesController < ApplicationController
+  before_action :admin_only
+
   layout "template"
 
   def index
@@ -123,5 +125,13 @@ class TemplatesController < ApplicationController
 
   def template_params
     params.require(:template).permit(:name, :content, :style)
+  end
+
+  def admin_only
+    if !user_signed_in? || !current_user.admin?
+      flash[:alert] = "You don't have permission to view this page."
+      redirect_to root_path
+      return
+    end
   end
 end
