@@ -1,9 +1,9 @@
 #template_simplicity
   #Head style='margin: auto; width: 90%; background-color: #eeeeee; text-align: center; font-family: Ubuntu;'
     - if @profile.picture?
-      = image_tag @profile.picture.url , style:'padding-top: 20px;', size:'140x180' 
+      = image_tag @profile.picture.url , style:'margin-top: 20px;', size:'140x180' 
     - else
-      = image_tag 'no-content.png', style:'padding-top: 20px;', size:'140x180' 
+      = image_tag 'no-content.png', style:'margin-top: 20px;', size:'140x180' 
 
     h2 style='margin-bottom: 0px;'
       = @profile.name
