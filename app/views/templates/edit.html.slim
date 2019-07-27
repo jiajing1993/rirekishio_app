@@ -11,8 +11,16 @@
   = template.submit "Submit"
   br
 
-  p= '_' + @template.name + '.html.slim:'
-  = template.text_area :content, place_holder: @template.content, id:'template_content'
+  #Code class='row'
+    #left class='col-md-6'
+      p= '_' + @template.name + '.html.slim:'
+      = template.text_area :content, place_holder: @template.content, id:'template_content'
+    #right class='col-md-6'
+      p
+        = @template.name + '.scss:'
+        i style='color:grey; font-size: 0.9em;'
+          | &nbsp changes here can affect css of whole application
+      = template.text_area :style, place_holder: @template.style, id:'template_style'
 p result preview:
 #Preview
   - if params[:preview] != "0"

@@ -1,81 +1,82 @@
-- if @profile.picture?
-  = image_tag @profile.picture.url, style:'padding-top: 10px; padding-bottom: 10px;'
-- else
-  = image_tag 'no-content.png', style:'padding-top: 10px; padding-bottom: 10px;'
+#template_default
+  - if @profile.picture?
+    = image_tag @profile.picture.url, style:'padding-top: 10px; padding-bottom: 10px;'
+  - else
+    = image_tag 'no-content.png', style:'padding-top: 10px; padding-bottom: 10px;'
 
-h2 style='margin-bottom: 0px;margin-top: 0px;'
-  = @profile.name
-h5 style='margin-top: 0px;'
-  = @profile.phone_number + ' '
-  = @profile.email
+  h2 style='margin-bottom: 0px;margin-top: 0px;'
+    = @profile.name
+  h5 style='margin-top: 0px;'
+    = @profile.phone_number + ' '
+    = @profile.email
 
-h1 style='margin-bottom: 0px;'
-  = @profile.current_role
-p style='margin-top: 0px;'
-  = @profile.career_goal
+  h1 style='margin-bottom: 0px;'
+    = @profile.current_role
+  p style='margin-top: 0px;'
+    = @profile.career_goal
 
-h2 style='margin-bottom: 5px;'
-  | Education Background
-table border='solid'
-  thead
-    tr 
-      th University
-      th Major
-      th Graduation Date
-  tbody
-  - @profile.education_backgrounds.each do |f|
-  	tr
-      td= f.university
-      td= f.major
-      td= f.graduation_date
-      
-h2 style='margin-bottom: 5px;'
-  | Working Experiences
-table border='solid'
-  thead
-    tr
-      th Company Name
-      th City
-      th Role
-      th Start Date
-      th End Date
-      th Description
-  tbody
-  - @profile.work_experiences.each do |f|
-    tr
-      td= f.company
-      td= f.city
-      td= f.role
-      td= f.start_date
-      td= f.end_date
-      td= f.description
+  h2 style='margin-bottom: 5px;'
+    | Education Background
+  table border='solid'
+    thead
+      tr 
+        th University
+        th Major
+        th Graduation Date
+    tbody
+    - @profile.education_backgrounds.each do |f|
+      tr
+        td= f.university
+        td= f.major
+        td= f.graduation_date
+        
+  h2 style='margin-bottom: 5px;'
+    | Working Experiences
+  table border='solid'
+    thead
+      tr
+        th Company Name
+        th City
+        th Role
+        th Start Date
+        th End Date
+        th Description
+    tbody
+    - @profile.work_experiences.each do |f|
+      tr
+        td= f.company
+        td= f.city
+        td= f.role
+        td= f.start_date
+        td= f.end_date
+        td= f.description
 
-h2 style='margin-bottom: 5px;'
-  | Skills
-table border='solid'
-  thead
-    tr
-      th Skill Name
-      th Proficiency
-      th Description
-  tbody
-  - @profile.skills.each do |f|
-    tr
-      td= f.skills
-      td= f.proficiency
-      td= f.description
+  h2 style='margin-bottom: 5px;'
+    | Skills
+  table border='solid'
+    thead
+      tr
+        th Skill Name
+        th Proficiency
+        th Description
+    tbody
+    - @profile.skills.each do |f|
+      tr
+        td= f.skills
+        td= f.proficiency
+        td= f.description
 
-h2 style='margin-bottom: 5px;'
-  | Project Experiences
-table border='solid'
-  thead
-    tr
-      th Project Name
-      th Project Description
-      th Project Link
-  tbody
-  - @profile.project_experiences.each do |f|
-    tr
-      td= f.name
-      td= f.description
-      td= f.link
+  h2 style='margin-bottom: 5px;'
+    | Project Experiences
+  table border='solid'
+    thead
+      tr
+        th Project Name
+        th Project Description
+        th Project Link
+    tbody
+    - @profile.project_experiences.each do |f|
+      tr
+        td= f.name
+        td= f.description
+        td= f.link
