@@ -28,7 +28,8 @@ end
 template_names = ['default', 'simplicity']
 template_names.each do |name|
   Template.create! name: name,
-    content: File.read('app/views/templates/source/_' + name + '.html.slim')
+    content: File.read('app/views/templates/source/_' + name + '.html.slim'),
+    style: File.read('app/assets/stylesheets/template_styles/' + name + '.scss')
 end
 
 #Profile
