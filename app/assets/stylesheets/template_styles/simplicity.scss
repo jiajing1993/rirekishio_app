@@ -1,3 +1,142 @@
 #template_simplicity {
+  margin: auto;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  background-color: #eeeeee;
+  text-align: center;
+  font-family: Ubuntu;
+ 
+  .profile-pic {
+    width: 140px;
+    height: 180px;
+  }
 
+  .profile-name, .profile-info {
+    margin-bottom: 0px;
+  }
+
+  .current-role {
+    margin-top: 20px;
+    font-size: 4em;
+  }
+
+  .career-goal {
+    margin-top: 20px;
+    margin-left: 7%;
+    margin-right: 7%;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+  }
+
+  hr {
+    height: 0px;
+    border: solid 1px;
+  }
+
+  .title {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: left;
+    margin-left: 5%;
+  }
+
+  table {
+    font-size: 1.5em;
+    margin-left: 5%;
+    width: 90%;
+    font-weight: normal;
+  }
+
+  .description {
+    background-color: #dfdfdf;
+    font-family: Sans Serif;
+    font-size: 0.8em;
+    width: 100%;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: left;
+    border-bottom: solid 1px #eee;
+  }
+
+  .bg-grey {
+     background-color: #dfdfdf;
+   }
+
+
+  #education-background {
+    .university {
+      white-space: nowrap;
+      padding-left: 1em;
+    }
+
+    .major {
+      width: 100%;
+      font-weight: bold;
+      font-size: 0.9em;
+    }
+
+    .graduation-date {
+      white-space: nowrap;
+    }
+  }
+
+  #working-experience {
+    .date {
+      white-space: nowrap;
+    }
+
+    .company {
+      white-space: nowrap;
+      padding-left: 1em;
+    }
+
+    .role {
+      width: 100%;
+      font-weight: bold;
+      font-size: 0.9em;
+     }
+    
+ 
+    .description {
+      font-family: Sans Serif;
+      font-size: 0.8em;
+      color: #020111;
+      text-align: left;
+      padding-top: 0.7em;
+      padding-bottom: 0.7em;
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+  }
+
+  #skills {
+    .skills {
+      white-space: nowrap;
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+
+    .proficiency {
+      text-align: right;
+      white-space: nowrap;
+      font-size: 0.8em;
+      padding-left: 1em;
+    }
+  }
+
+  #project-experience {
+    .project {
+      width: 100%;
+      text-align: left;
+      padding-left: 1em;
+      font-size: 0.9em;
+      font-weight: bold;
+    }
+
+    .link {
+      font-family: Monospace;
+      font-size: 0.9em;
+      white-space: nowrap
+    }
+  }
 }
