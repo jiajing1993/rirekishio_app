@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :user_signed_in, only: :show
   before_action :correct_user, only: :show
+  before_action :correct_profile, only: :preview
 
   def show
     @profile = Profile.find(params[:id])
@@ -11,18 +12,18 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    session[:profile_params] = profile_params
-    @profile = Profile.new(session[:profile_params])
-    if no_user_id_but_valid?(@profile)
-      render :template
+    @profile = Profile.new(profile_params)
+    if @profile.save
+      session[:profile_id] = @profile.id
+      redirect_to action: "preview", id: @profile.id
       return
     else
       render :new
     end
   end
 
-  def template
-    @profile = Profile.new
+  def preview
+    @profile = Profile.find(params[:id])
   end
 
   def save
@@ -65,17 +66,6 @@ class ProfilesController < ApplicationController
     return params.require(:project_experience).values.map { |x| x.slice(:name, :link, :description) }
   end
 
-  def no_user_id_but_valid?(profile)
-    profile.valid?
-    if profile.errors.full_messages.count == 2 &&
-        profile.errors.full_messages[0] == 'User must exist' &&
-        profile.errors.full_messages[1] == 'User can\'t be blank'
-      return true
-    else
-      return false
-    end
-  end
-
   def user_signed_in
     if !user_signed_in?
       flash[:alert] = 'Please sign in first.'
@@ -86,6 +76,14 @@ class ProfilesController < ApplicationController
 
   def correct_user
     if current_user.id != params[:id].to_i
+      flash[:alert] = 'You don\'t have permission to view this page.'
+      redirect_to root_url
+      return
+    end
+  end
+
+  def correct_profile
+    if session[:profile_id] != params[:id].to_i
       flash[:alert] = 'You don\'t have permission to view this page.'
       redirect_to root_url
       return

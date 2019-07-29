@@ -14,6 +14,5 @@ Rails.application.routes.draw do
   }
 
   resources :profiles, only: [:show, :new, :create, :edit, :update, :destroy]
-  get '/profile/template', to: 'profiles#template'
-  post '/profile/template', to: 'profiles#save'
+  get '/profile/preview', to: 'profiles#preview'
 end

@@ -1,0 +1,87 @@
+#Head style='margin: auto; width: 90%; background-color: #eeeeee; text-align: center; font-family: Ubuntu;'
+  - if @profile.picture?
+    = image_tag @profile.picture.url, style:'padding-top: 20px;', size:'140x180'
+  - else
+    = image_tag 'no-content.png', style:'padding-top: 20px;', size:'140x180'
+
+  h2 style='margin-bottom: 0px;'
+    = @profile.name
+  h3 style='margin-top: 0px;'
+    = @profile.phone_number + ' '
+    b &nbsp&nbsp&nbsp&nbsp
+    = @profile.email
+
+  h1 style='margin-bottom: 0px; font-size: 4em;'
+    = @profile.current_role
+  p style='margin-top: 20px; font-size: 1.5em; margin-bottom: 50px;'
+    = @profile.career_goal
+  hr style='height: 1px;'
+
+  h1 style='margin-bottom: 5px; text-align: left; margin-left: 30px;'
+    | Education Background
+  h3 style='font-weight: normal;'
+    table style='width: 100%;'
+      tbody
+      - @profile.education_backgrounds.each_with_index do |f,i|
+        tr
+          td style='width: 30px; padding-left: 15px;'
+            = '#' + (i+1).to_s
+          td= f.university
+          td= f.major
+          td style='text-align: right; padding-right: 15px;'
+            = 'Graduated at ' + f.graduation_date.strftime('%d %b %Y')
+
+  h1 style='margin-bottom: 5px; text-align: left; margin-left: 30px;'
+    | Working Experiences
+  h3 style='font-weight: normal;'
+    table style='width: 100%;'
+      tbody
+      - @profile.work_experiences.each_with_index do |f,i|
+        tr
+          td style='width: 30px; padding-left: 15px;'
+            = '#' + (i+1).to_s
+          td style='text-align: left;'
+            = f.company
+          td= f.city
+          td= f.role
+          td style='text-align: right; padding-right: 15px;'
+            = f.start_date.strftime('%d %b %Y') +  ' - ' + f.end_date.strftime('%d %b %Y')
+        tr
+          td
+          td colspan=4 style='text-align: left; padding-bottom: 10px;'
+            i
+              = f.description
+
+
+  h1 style='margin-bottom: 5px; text-align: left; margin-left: 30px;'
+    | Skills
+  h3 style='font-weight: normal;'
+    table style='width: 100%;'
+      tbody
+      - @profile.skills.each_with_index do |f,i|
+        tr
+          td style='width: 30px; padding-left: 15px;vertical-align: top;'
+            = '#' + (i+1).to_s
+          td= f.skills
+          td style='text-align: left;'
+            = f.description
+          td style='text-align: right; padding-right: 15px;vertical-align: top; font-size: 0.8em;'
+            strong
+              = f.proficiency.upcase
+
+  h1 style='margin-bottom: 5px; text-align: left; margin-left: 30px;'
+    | Project Experiences
+  h3 style='font-weight: normal;'
+    table style='width: 100%'
+      tbody
+      - @profile.project_experiences.each_with_index do |f,i|
+        tr
+          td style='width: 30px; padding-left: 15px;vertical-align: top;'
+            = '#' + (i+1).to_s
+          td style='vertical-align: top;'
+            = f.name
+          td style='text-align: left;'
+            = f.description
+          td style='vertical-align: top; font-family: monospace;'
+            a style='color: black;' href= f.link
+              = f.link

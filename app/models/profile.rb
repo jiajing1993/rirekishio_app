@@ -15,7 +15,7 @@
 #
 
 class Profile < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
 
   has_many :skills
   has_many :work_experiences
@@ -23,6 +23,8 @@ class Profile < ApplicationRecord
   has_many :project_experiences
 
   validates_associated :skills, :work_experiences, :education_backgrounds, :project_experiences
+
+  mount_uploader :picture, PictureUploader
 
   accepts_nested_attributes_for :skills, :work_experiences, :education_backgrounds, :project_experiences, allow_destroy: true
 
@@ -46,8 +48,8 @@ class Profile < ApplicationRecord
     presence: true,
     length: { maximum: 255 }
   validates :user_id,
-    presence: true,
-    uniqueness: true # => No user can have more than 1 profile
+    uniqueness: true, # => No user can have more than 1 profile
+    allow_nil: true
   validates :picture,
     presence: true
 end
