@@ -1,0 +1,19 @@
+button
+  = link_to 'New Template', new_template_path
+hr
+
+table border="1"
+  thead
+    tr
+      th Template Name
+      th
+      th
+      th
+  tbody
+    - @templates.each do |template|
+      tr
+        td= template.name + ' '
+        td= link_to "view", template_path(template)
+        td= link_to "edit", edit_template_path(template)
+        td= link_to "delete", template_path(template), method: :delete, \
+          data: { confirm: "Are you sure to delete _#{template.name}.html.slim and #{template.name}.scss ?" }

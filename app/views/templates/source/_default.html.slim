@@ -1,0 +1,89 @@
+#template_default
+  div class='row'
+    div class='col-md-2 offset-3'
+      - if @profile.picture?
+        = image_tag @profile.picture.url, class:'profile-pic'
+      - else
+        = image_tag 'no-content.png', class:'profile-pic'
+    div class='col-md-3'
+      h1 class='profile-name'
+        = @profile.name
+      h5 class='profile-phone'
+        = @profile.phone_number
+      h5 class='profile-email'
+        = @profile.email
+      h1 class='current-role'
+        = @profile.current_role
+        
+  h4 class='career-goal'
+    = @profile.career_goal
+
+  #education_background class='offset-1 col-md-10'
+    h2 class='education-background'
+      | Education Background
+    table class='table table-bordered table-active'
+      thead
+        tr 
+          th University
+          th Major
+          th Graduation Date
+      tbody
+      - @profile.education_backgrounds.each do |f|
+        tr
+          td= f.university
+          td= f.major
+          td= f.graduation_date
+          
+  #working_experience class='offset-1 col-md-10'
+    h2 class='working-exprience'
+      | Working Experiences
+    table class='table table-bordered table-active'
+      thead
+        tr
+          th Company Name
+          th City
+          th Role
+          th Start Date
+          th End Date
+          th Description
+      tbody
+      - @profile.work_experiences.each do |f|
+        tr
+          td= f.company
+          td= f.city
+          td= f.role
+          td= f.start_date
+          td= f.end_date
+          td= f.description
+
+  #skills class='offset-1 col-md-10'
+    h2 class='skills'
+      | Skills
+    table class='table table-bordered table-active'
+      thead
+        tr
+          th Skill Name
+          th Proficiency
+          th Description
+      tbody
+      - @profile.skills.each do |f|
+        tr
+          td= f.skills
+          td= f.proficiency
+          td= f.description
+
+  #project_experience class='offset-1 col-md-10'
+    h2 style='margin-bottom: 5px;'
+      | Project Experiences
+    table class='table table-bordered table-active'
+      thead
+        tr
+          th Project Name
+          th Project Description
+          th Project Link
+      tbody
+      - @profile.project_experiences.each do |f|
+        tr
+          td= f.name
+          td= f.description
+          td= f.link

@@ -1,0 +1,8 @@
+h1
+  | Template: 
+  = @template.name
+p
+  button = link_to "Edit", edit_template_path(@template)
+  button = link_to "View All", templates_path
+#Preview
+  = render 'templates/source/' + @template.name

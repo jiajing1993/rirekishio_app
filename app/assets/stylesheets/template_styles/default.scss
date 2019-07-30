@@ -1,0 +1,57 @@
+#template_default {
+  font-family: Verdana;
+  
+  .profile-pic {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-right: 40px;
+    height: 180px;
+    width: 140px;
+  }
+  
+  .profile-name {
+    margin-top: 40px;
+    font-size: 3em;
+    text-align: center;
+  }
+  
+  .profile-phone, .profile-email {
+    text-align: center;
+  }
+  
+  .current-role {
+    text-align: center;
+  }
+  
+  .career-goal {
+    text-align: center; 
+  }
+  
+  #education_background {
+    .education-background {
+      margin-top: 50px;
+      margin-bottom: 15px;
+    }
+  }
+  
+  #working_experience {
+    .working-experience {
+      margin-top: 50px;
+      margin-bottom: 15px;
+    }
+  }
+  
+  #skills {
+    .skills {
+      margin-top: 50px;
+      margin-bottom: 15px;
+    }
+  }
+  
+  #project_experience {
+    .project_experience {
+      margin-top: 50px;
+      margin-bottom: 15px;
+    }
+  }
+}

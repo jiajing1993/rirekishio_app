@@ -3,15 +3,19 @@
 # Table name: profiles
 #
 #  id           :integer          not null, primary key
-#  name         :string
-#  email        :string
-#  phone_number :string
-#  current_role :string
 #  career_goal  :string
+#  current_role :string
+#  email        :string
+#  name         :string
+#  phone_number :string
+#  picture      :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  user_id      :integer
-#  picture      :string
+#
+# Indexes
+#
+#  index_profiles_on_user_id  (user_id)
 #
 
 class Profile < ApplicationRecord
@@ -50,6 +54,4 @@ class Profile < ApplicationRecord
   validates :user_id,
     uniqueness: true, # => No user can have more than 1 profile
     allow_nil: true
-  validates :picture,
-    presence: true
 end

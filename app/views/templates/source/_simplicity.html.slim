@@ -1,0 +1,91 @@
+#template_simplicity
+  - if @profile.picture?
+    = image_tag @profile.picture.url , class:'profile-pic'
+  - else
+    = image_tag 'no-content.png', class:'profile-pic'
+
+  h2 class='profile-name'
+    = @profile.name
+  h3 class='profile-info'
+    = @profile.phone_number + ' '
+    b &nbsp&nbsp&nbsp&nbsp
+    = @profile.email
+
+  h1 class='current-role'
+    = @profile.current_role
+  p class='career-goal'
+    = @profile.career_goal
+  hr
+
+  #education-background
+    h2 class='title'
+      | Education Background
+    table
+      tbody
+      - @profile.education_backgrounds.each_with_index do |f,i|
+        tr
+          td 
+            = '#' + (i+1).to_s
+          td class='university'
+            = f.university
+          td class='major'
+            = f.major.upcase
+          td class='graduation-date'
+            = 'Graduated at ' + f.graduation_date.strftime('%d %b %Y')
+  
+  #working-experience
+    h2 class='title'
+      | Working Experiences
+    table
+      tbody
+      - @profile.work_experiences.each_with_index do |f,i|
+        tr
+          td
+            = '#' + (i+1).to_s
+          td class='company'
+            = "#{f.company}, #{f.city}"
+          td class='role'
+            = f.role.upcase
+          td class='date'
+            = f.start_date.strftime('%d %b %Y') +  ' - ' + f.end_date.strftime('%d %b %Y')
+        tr class='bg-grey'
+          td
+          td colspan=4 class='description'
+              = f.description
+
+
+  #skills
+    h2 class='title'
+      | Skills
+    table
+      tbody
+      - @profile.skills.each_with_index do |f,i|
+        tr
+          td
+            = '#' + (i+1).to_s
+          td class='skills'
+            = f.skills
+          td class='description'
+            = f.description
+          td class='proficiency'
+            strong
+              = f.proficiency.upcase
+
+  #project-experience
+    h2 class='title'
+      | Project Experiences
+    table
+      tbody
+      - @profile.project_experiences.each_with_index do |f,i|
+        tr
+          td
+            = '#' + (i+1).to_s
+          td class='project'
+            = f.name.upcase
+          td class='link'
+            a href= f.link
+              = if f.link? then "[ #{f.link} ]" else " "
+        tr class='bg-grey'
+          td
+          td colspan='2' class='description'
+            = f.description

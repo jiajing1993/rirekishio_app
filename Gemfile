@@ -20,6 +20,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'carrierwave' # Upload picture
 gem 'mini_magick' # Picture manipulation
+gem 'codemirror-rails'
+gem 'jquery-rails'
+gem 'bootstrap'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

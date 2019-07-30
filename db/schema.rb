@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_09_140240) do
+ActiveRecord::Schema.define(version: 2019_07_26_151441) do
 
   create_table "education_backgrounds", force: :cascade do |t|
     t.string "university"
@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(version: 2019_07_09_140240) do
     t.index ["profile_id"], name: "index_skills_on_profile_id"
   end
 
+  create_table "templates", force: :cascade do |t|
+    t.string "name"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "style"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -62,9 +70,11 @@ ActiveRecord::Schema.define(version: 2019_07_09_140240) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
+    t.integer "template_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["template_id"], name: "index_users_on_template_id"
   end
 
   create_table "work_experiences", force: :cascade do |t|

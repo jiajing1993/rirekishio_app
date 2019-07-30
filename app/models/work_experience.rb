@@ -3,13 +3,17 @@
 # Table name: work_experiences
 #
 #  id          :integer          not null, primary key
+#  city        :string
 #  company     :string
+#  description :string
+#  end_date    :date
 #  role        :string
 #  start_date  :date
-#  end_date    :date
-#  city        :string
-#  description :string
 #  profile_id  :integer
+#
+# Indexes
+#
+#  index_work_experiences_on_profile_id  (profile_id)
 #
 
 class WorkExperience < ApplicationRecord
