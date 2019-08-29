@@ -19,7 +19,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise'
 gem 'carrierwave' # Upload picture
-gem 'mini_magick' # Picture manipulation
+gem 'mini_magick', '>= 4.9.4' # Picture manipulation
+gem 'nokogiri', '>= 1.10.4'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
